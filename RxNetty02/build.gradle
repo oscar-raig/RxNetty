@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+	compile 'io.reactivex:rxjava:1.0.5'
+	compile 'io.netty:netty:3.5.0.Final'
+	compile 'io.netty:netty-buffer:4.0.24.Final'
+	compile 'io.netty:netty-handler:4.0.27.Final'
+	compile 'io.netty:netty-codec:4.0.27.Final'
+	compile 'io.netty:netty-all:4.0.27.Final'
+	compile 'io.reactivex:rxnetty:0.4.8'
+}
+
+
+task runHelloWorldClient (dependsOn: [classes], type: JavaExec) {
+
+    main = "org.raig.HelloWorldClient"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runHelloWorldServer (dependsOn: [classes], type: JavaExec) {
+
+    main = "org.raig.HelloWorldServer"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
